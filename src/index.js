@@ -3,12 +3,12 @@ import express from 'express';
 import app from './config/server';
 import bodyParser from 'body-parser';
 import homeRoutes from './app/routes/homeRoutes';
-import userRoutes from './app/routes/usersRoutes';
+import userOldRoutes from './app/routes/usersOldRoutes';
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 homeRoutes(app);
-userRoutes(app);
+userOldRoutes(app);
 
 app.use(express.static(path.join(__dirname, '/public')));
 
