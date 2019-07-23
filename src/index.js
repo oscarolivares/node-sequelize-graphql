@@ -1,10 +1,16 @@
+import path from 'path';
+import express from 'express';
 import app from './config/server';
 import bodyParser from 'body-parser';
-import routes from './app/routes/home';
+import homeRoutes from './app/routes/homeRoutes';
+import userRoutes from './app/routes/usersRoutes';
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-routes(app);
+homeRoutes(app);
+userRoutes(app);
+
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
