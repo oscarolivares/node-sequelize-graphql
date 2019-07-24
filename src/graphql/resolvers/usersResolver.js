@@ -6,8 +6,8 @@ export const resolvers = {
       return `${ctx.message}`;
     },
 
-    async User(_, { id }) {
-      return await db.User.findAll({
+    User(_, { id }) {
+      return db.User.findAll({
         raw: true,
         where: {
           id: id
@@ -17,17 +17,17 @@ export const resolvers = {
           return users;
         })
         .catch(err => {
-          return 'none';
+          return null;
         });
     },
 
-    async Users() {
-      return await db.User.findAll({ raw: true })
+    Users() {
+      return db.User.findAll({ raw: true })
         .then(users => {
           return users;
         })
         .catch(err => {
-          return 'none';
+          return null;
         });
     }
   }
