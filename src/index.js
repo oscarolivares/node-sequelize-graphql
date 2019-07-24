@@ -2,8 +2,10 @@ import path from 'path';
 import express from 'express';
 import app from './config/server';
 import bodyParser from 'body-parser';
+
 import homeRoutes from './app/routes/homeRoutes';
 import userOldRoutes from './app/routes/usersOldRoutes';
+import simpleRequestRoutes from './app/routes/simpleRequestRoutes';
 
 import graphqlHTTP from 'express-graphql';
 import schema from './graphql/schemas/usersSchema';
@@ -23,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 homeRoutes(app);
 userOldRoutes(app);
+simpleRequestRoutes(app);
 
 app.use(express.static(path.join(__dirname, '/public')));
 
