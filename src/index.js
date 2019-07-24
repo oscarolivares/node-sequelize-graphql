@@ -5,6 +5,20 @@ import bodyParser from 'body-parser';
 import homeRoutes from './app/routes/homeRoutes';
 import userOldRoutes from './app/routes/usersOldRoutes';
 
+import graphqlHTTP from 'express-graphql';
+import schema from './graphql/schemas/usersSchema';
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    graphiql: true,
+    schema: schema,
+    context: {
+      message: 'Test ok'
+    }
+  })
+);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 homeRoutes(app);
