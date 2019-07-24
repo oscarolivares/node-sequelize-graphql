@@ -12,9 +12,22 @@ sequelize init:models
 sequelize init:seeders
 sequelize init:migrations
 
--- First model
+-- Create model
 sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
 
--- First migration
+-- Run migration
 sequelize db:migrate --env development
+
+-- Genrate a seed to populate the db
+sequelize seed:generate --name demo-user
+
+-- Run all seeds
+sequelize db:seed:all
+
+-- Reset all seeds
+sequelize db:seed:undo:all
+
+-- Reset de database table
+sequelize db:migrate:undo:all
+sequelize db:migrate
 */
